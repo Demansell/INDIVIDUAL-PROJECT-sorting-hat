@@ -8,7 +8,7 @@ const wizards = [
 ]
 
 // Renders to Dom
-const renderToDom = (divId, htmlString) => {
+const render = (divId, htmlString) => {
   const render = document.querySelector(divId);
   render.innerHTML = htmlString;
 }
@@ -16,7 +16,7 @@ const renderToDom = (divId, htmlString) => {
 // Sorting Student
 const sorting = (e) => {
   event.preventDefault();
-  
+
 }
 
 
