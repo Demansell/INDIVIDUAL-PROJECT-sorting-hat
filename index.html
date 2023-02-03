@@ -10,36 +10,48 @@
   <title> Welcome to the Wizarding World!</title>
   </head>
 <body>
-  <div id="tap"></div>
-
-   <!-- Start Button-->
-  <div class="card">
-    <div class="card-header">
-      Wizarding World
-    </div>
-    <div class="card-body">
-      <h5 class="card-title">The Sorting Hat!</h5>
-      <p class="card-text">Click the button to start</p>
-      <a href="#" class="btn btn-primary" id="start">Start</a>
-    </div>
+  <div id="Tob">
+  <h1>Welcome to the Sorting Hat!</h1>
   </div>
 
-  <div class="form-floating mb-3">
-    <form class="form-floating">
-      <input type="Name" class="name" id="name" value="Name">
-      <label for="floatingInputValue"></label>
-    </form>
+  <div id="Second">
+  <h2>Click below to start</h2>
+  </div>
+
+
+  <section id="hat"></section>
+
+  <button onclick='toggle(this)' id="sort" type="submit">Click here</button>
+
+<section>
+ 
+  <form hidden id="form" class="row g-3">
+    <div class="col-auto">
+    <label for="staticEmail2" class="visually-hidden">Email</label>
+    <input type="text" readonly class="form-control-plaintext" id="staticEmail2" style="text-decoration: underline" value="Find Where You Belong">
     </div>
+    <div class="col-auto">
+    <label for="inputPassword2" class="visually-hidden">Password</label>
+    <input type="password" class="form-control" id="inputPassword2" placeholder="Name?">
+    </div>
+    <div class="col-auto">
+    <butt type="submit" class="btn btn-secondary mb-3">Sort Me</button>
+      </div>
+        </form>
+      </section> 
   
+  <div id="buttons">
+    <button type="button" id="all">All Students</button>
+    <button type="button" id="Gryff">Gryffindors</button>
+    <button type="button" id="huff">Hufflepuffs</button>
+    <button type="button" id="rave">Ravenclaws</button>
+    <button type="button" id="slyth">Slytherins</button>
+  </div>
+  
+    <div id="theWizards"></div>
+      
 
-  <button class="btn btn-primary" id= all type="submit">All</button>
-  <button class="btn btn-primary" id= Gryffindor type="submit">Gryffindor</button>
-  <button class="btn btn-primary" id= Hufflepuff type="submit">Hufflepuff</button>
-  <button class="btn btn-primary" id= Ravenclaw type="submit">Ravenclaw</button>
-  <button class="btn btn-primary" id= Slytherin type="submit">Slytherin</button>
-
-
-    
+  
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
       
       <script src="main.js"></script>
