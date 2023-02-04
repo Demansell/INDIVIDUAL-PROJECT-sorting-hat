@@ -43,7 +43,7 @@ let domString = "";
       <div class="card-body">
       <h5 class="card-title">${wiz.name}</h5>
         <p class="card-text">${wiz.house}</p>
-        <button class="btn btn-danger" id="delete--${wiz.id}">Delete</button>
+        <button class="btn btn-danger" id="delete--${wiz.id}">Expel</button>
       </div>   
       </div>`;
 };
@@ -51,9 +51,7 @@ let domString = "";
 renderToDom("#theWizards", domString);
 }
 
-cardsOnDom(wizards);
-
-
+// filter by house
 const filter = (array, houses) => {
   const wizardArray = [];
 
@@ -64,3 +62,68 @@ const filter = (array, houses) => {
   }
   return wizardArray;
 }
+
+// var to get id's from buttons on html
+const showAll = document.querySelector("#all")
+const showGry = document.querySelector("#gryff")
+const showHuf = document.querySelector("#huff")
+const showRav = document.querySelector("#rave")
+const showSly = document.querySelector("#slyth")
+
+// Event listernes to sort by house on button click 
+
+showAll.addEventListener("click", () => {
+  cardsOnDom(wizards)
+  }
+);
+
+showGry.addEventListener("click", () => {
+  const gryFilter = filter (wizards, "gryff")
+  cardsOnDom(gryFilter)
+  }
+);
+
+showHuf.addEventListener("click", () => {
+  const hufFilter = filter (wizards, "huff")
+  cardsOnDom(hufFilter)
+  }
+);
+
+showRav.addEventListener("click", () => {
+  const ravFilter = filter (wizards, "rave")
+  cardsOnDom(ravFilter)
+  }
+);
+
+showSly.addEventListener("click", () => {
+  const slyFilter = filter (wizards, "slyth")
+  cardsOnDom(slyFilter)
+  }
+)
+
+
+
+
+
+
+
+// to add name input after button click 
+
+/*const showForm = () => {
+  const domString = 
+  '<input id="nameForm" type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="addon-wrapping"/><button id="submitButton" class="btn btn-primary" type="submit">Submit</button>';
+
+  renderToDom('#form', domString);
+
+  document.querySelector("#submitButton").addEventListener("click",newStu);
+
+};
+
+document.querySelector("#sort").addEventListener("click", showForm);
+
+const newStu = (e) => {
+  event.preventDefault();
+
+  // 
+}
+*/
