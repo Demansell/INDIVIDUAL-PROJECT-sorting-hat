@@ -48,12 +48,54 @@ let domString = "";
       </div>`;
 };
 
-renderToDom("#theWizards", domString);
+renderToDom("#app", domString);
+
+  // add the event listener for the retire button! After you render!
+  document.querySelector("#app").addEventListener("click", retireWizard);
 }
 
 // empty array for vold army
 
 const vold = [];
+
+// get the RETIRED wizard cards on the DOM
+// Same as above but for retired.
+const voldyCardsOnDom = (array) => {
+  let domString = "";
+  for (const wiz of array) {
+    domString += `<div class="card" style="width: 18rem;">
+    <img src="${wiz.image}" class="card-img-top" alt="...">
+    <div class="card-body">
+      <p class="card-text">${wiz.name}</p>
+    </div>
+  </div>`;
+  }
+
+  renderToDom("#voldy", domString);
+};
+
+// Retire a wizard
+const retireWizard = (event) => {
+  // if the id includes "deleteButton"
+  if (event.target.id.includes("delete")) {
+    // get that object id off of our target ID
+    const [, wizId] = event.target.id.split("--");
+    // Use it to find the index of the object
+    const wizardsIndex = wizards.findIndex(
+      (wiz) => Number(wizId) === wiz.id
+    );
+
+    // splice that object out of the array
+    const retiredWizard = wizards.splice(wizardsIndex, 1);
+
+    // push our retired into the retiredInstructor array
+    retiredWizard.push(retiredWizard);
+
+    // Render both of our arrays! Retired and regular.
+    voldyCardsOnDom(retiredWizard);
+    cardsOnDom(wizards);
+  }
+};
 
 // filter by house
 const filter = (array, theHouse) => {
@@ -109,7 +151,7 @@ showSly.addEventListener("click", () => {
 const showForm = () => {
    // create a dom string containing your form
   const domString = 
-  '<input id="nameForm" type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="addon-wrapping"/><button id="submitButton" class="btn btn-primary" type="submit">Submit</button>';
+  '<input id="nameForm" type="text" class="form-control" placeholder="Name" aria-label="Username" aria-describedby="addon-wrapping"/><button id="submitButton" class="btn btn-primary" type="submit">Submit</button>';
 
  // Render that to the Dom
   renderToDom('#form', domString);
@@ -121,30 +163,5 @@ const showForm = () => {
 
 };
 
-// Show that form with the function above ^^^^
+//Show that form with the function above ^^^^
 document.querySelector("#sort").addEventListener("click", showForm);
-
-const newStu = (e) => {
-  event.preventDefault();
-
-
-
- // create a random number that is within the range of my team array
- const randNum = Math.floor(Math.random() * 6);
-
-   // grab the random instructor using dot notation
-  // Uses the random number as an index
-  const randomWiz = wizards[randNum];
-
-  // Create new wizards object
-  const newWiz = {
-    id: team.length + 2, // Next ID number
-    name: document.querySelector("#nameForm").value,
-    house: randomWiz.house,
-    image: randomInstructor.image,
-  };
-
-    // push it to the team and put it on the DOM
-    team.push(newWiz);
-    cardsOnDom(team);
-  };
