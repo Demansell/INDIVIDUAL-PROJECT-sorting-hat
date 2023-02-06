@@ -51,24 +51,28 @@ let domString = "";
 renderToDom("#theWizards", domString);
 }
 
+// empty array for vold army
+
+const vold = [];
+
 // filter by house
-const filter = (array, houses) => {
+const filter = (array, theHouse) => {
   const wizardArray = [];
 
   for (const wiz of array) {
-    if (wiz.house === houses) {
+    if (wiz.house === theHouse) {
       wizardArray.push(wiz)
     }
   }
   return wizardArray;
-}
+};
 
 // var to get id's from buttons on html
 const showAll = document.querySelector("#all")
-const showGry = document.querySelector("#gryff")
-const showHuf = document.querySelector("#huff")
-const showRav = document.querySelector("#rave")
-const showSly = document.querySelector("#slyth")
+const showGry = document.querySelector("#Gryffindor")
+const showHuf = document.querySelector("#Hufflepuff")
+const showRav = document.querySelector("#Ravenclaw")
+const showSly = document.querySelector("#Slytherin")
 
 // Event listernes to sort by house on button click 
 
@@ -78,52 +82,69 @@ showAll.addEventListener("click", () => {
 );
 
 showGry.addEventListener("click", () => {
-  const gryFilter = filter (wizards, "gryff")
+  const gryFilter = filter (wizards, "Gryffindor")
   cardsOnDom(gryFilter)
   }
 );
 
 showHuf.addEventListener("click", () => {
-  const hufFilter = filter (wizards, "huff")
+  const hufFilter = filter (wizards, "Hufflepuff")
   cardsOnDom(hufFilter)
   }
 );
 
 showRav.addEventListener("click", () => {
-  const ravFilter = filter (wizards, "rave")
+  const ravFilter = filter (wizards, "Ravenclaw")
   cardsOnDom(ravFilter)
   }
 );
 
 showSly.addEventListener("click", () => {
-  const slyFilter = filter (wizards, "slyth")
+  const slyFilter = filter (wizards, "Slytherin")
   cardsOnDom(slyFilter)
   }
 )
 
-
-
-
-
-
-
-// to add name input after button click 
-
-/*const showForm = () => {
+// Function to show name input form after button click
+const showForm = () => {
+   // create a dom string containing your form
   const domString = 
   '<input id="nameForm" type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="addon-wrapping"/><button id="submitButton" class="btn btn-primary" type="submit">Submit</button>';
 
+ // Render that to the Dom
   renderToDom('#form', domString);
+
+ // Add you event listener for your submit button
+  // You HAVE to do this after you render it to DOM
 
   document.querySelector("#submitButton").addEventListener("click",newStu);
 
 };
 
+// Show that form with the function above ^^^^
 document.querySelector("#sort").addEventListener("click", showForm);
 
 const newStu = (e) => {
   event.preventDefault();
 
-  // 
-}
-*/
+
+
+ // create a random number that is within the range of my team array
+ const randNum = Math.floor(Math.random() * 6);
+
+   // grab the random instructor using dot notation
+  // Uses the random number as an index
+  const randomWiz = wizards[randNum];
+
+  // Create new wizards object
+  const newWiz = {
+    id: team.length + 2, // Next ID number
+    name: document.querySelector("#nameForm").value,
+    house: randomWiz.house,
+    image: randomInstructor.image,
+  };
+
+    // push it to the team and put it on the DOM
+    team.push(newWiz);
+    cardsOnDom(team);
+  };
