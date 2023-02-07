@@ -89,7 +89,7 @@ const retireWizard = (event) => {
     const retiredWizard = wizards.splice(wizardsIndex, 1);
 
     // push our retired into the retiredInstructor array
-    vold.push(retiredWizard);
+    vold.push(vold[0]);
 
     // Render both of our arrays! Retired and regular.
     voldyCardsOnDom(retiredWizard);
@@ -166,27 +166,21 @@ const showForm = () => {
 //Show that form with the function above ^^^^
 document.querySelector("#sort").addEventListener("click", showForm);
 
-const newStu = (e) => {
+
+const createRandomNewWizard = (event) => {
   event.preventDefault();
 
-//take value
-const name = document.querySelector(".name");
-const house = document.querySelector(".house")
-}
-
   //create a random number that is within the range of my team array
- /* const randNum = Math.floor(Math.random() * 6);
+ const randNum = Math.floor(Math.random() * 6);
 
-  Create new wizards object
-  for (const wiza of wizards) {
-    if (randNum === wiza.id) {
-      const newWiza = {
-        id: wiza.length + 1,
-        name: document.querySelector("#nameForm").value,
-        house: wiza.house
-      };
-      wizards.push()
-    }
-  }
-};
-*/
+ const randomHouse = house[randNum];
+
+  //Create new wizards object
+ const newWiz = {
+  id: wizards.length + 2, 
+  name: document.querySelector("nameForm").value,
+  house: randomHouse.house,
+  
+ }
+
+ }
